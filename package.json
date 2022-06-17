@@ -4,9 +4,9 @@
   "description": "Nodejstutorial",
   "main": "index.js",
   "scripts": {
-    "build": "babel app.js",
+    "build": "babel ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
