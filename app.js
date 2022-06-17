@@ -60,3 +60,5 @@ app.get("/", (req, res) => {
 // Listen on port 3300
 
 app.listen(port, () => console.log(`Listening on port ${url}`));
+
+module.exports = app;
