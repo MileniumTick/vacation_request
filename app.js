@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 3300;
-const bodyParser = require("body-parser");
 const session = require("express-session");
 const patch = require('path');
-const nodemailer = require("nodemailer");
 const url = 'localhost:3300';
 
 require("./routes/conn");
