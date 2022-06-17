@@ -13,7 +13,7 @@ app.use(express.static(patch.join(__dirname, 'uploads')));
 
 
 // Templating Engine
-app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 // Parsing middleware
