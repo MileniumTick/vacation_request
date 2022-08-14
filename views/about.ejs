@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/dash.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <title>DashBoard</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">
+                            <%= Came.name %>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">DashBoard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="file-tray-stacked-outline"></ion-icon>
+                        </span>
+                        <span class="title">Solicitudes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Configuracion</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/50672059415/?text=Prueba para enviar mensajes desde la pagina"
+                        target="_blank">
+                        <span class="icon">
+                            <ion-icon name="logo-whatsapp"></ion-icon>
+                        </span>
+                        <span class="title">Ayuda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/user/logout/<%= Came.id %>">
+                        <span class="icon">
+                            <ion-icon name="exit-outline"></ion-icon>
+                        </span>
+                        <span class="title">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- main -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="grid-outline"></ion-icon>
+                </div>
+                <!--Buscar noombre-->
+                <div class="search">
+                    <label for="">
+                        <input type="text" placeholder="Buscar nombre" id="myInput" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                <!-- userImg -->
+                <div class="user">
+                    <img src="/<%= Came.img %>" alt="Imagen de usuario" />
+                </div>
+            </div>
+
+            <%if(message){%>
+                <Div id="close">
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+                        rel="stylesheet"
+                        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+                        crossorigin="anonymous">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                        crossorigin="anonymous"></script>
+                    <div class="alert alert-dismissible fade show alert-<%= message.status %>" role="alert">
+                        <strong>
+                            <%= message.message %>
+                        </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                            onclick="closeIt()"></button>
+                    </div>
+                </Div>
+                <%;} %>
+
+
+                    <!-- New register -->
+                    <div class="btn-n">
+                        <a href="#" class="">
+                            <ion-icon name="add-circle-outline" class="add-circle-outline"></ion-icon>
+                        </a>
+                    </div>
+
+                    <div class="regform">
+                        <h2 class="">Vacacion</h2>
+                        <form class="sign-up-form" action="/records/<%= Came.id %>" method="post">
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input name="name" id="newname" type="text" placeholder="Nombre completo" value=""
+                                    required />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <select name="vaca" id="rol">
+                                    <option value="Cumpleannos">Beneficio de cumpleaños</option>
+                                    <option value="Vacaciones">Vacaciones</option>
+                                    <option value="Singoze">Sin gose de salario</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input name="ced" id="newced" type="number" placeholder="   Cedula" value="" required />
+                            </div>
+
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <select name="estado" id="newstate" required>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="Aceptado">Aceptado</option>
+                                    <option value="Declinado">Declinado</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input name="detalle" id="newdetails" type="text" placeholder=" Detalles" value=""
+                                    required />
+                            </div>
+
+                            <div class="input-field">
+                                <i class="fas fa-envelope">Fecha inicial</i>
+                                <input type="datetime-local" name="dateStart" id="" required />
+                            </div>
+
+                            <div class="input-field">
+                                <i class="fas fa-envelope">Fecha final</i>
+                                <input type="datetime-local" name="dateEnd" id="" required />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input name="phone" id="newdetails" type="number" placeholder=" Telefono" value=""
+                                    required />
+                            </div>
+
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" name="department" id="" placeholder="Departamento" required />
+                            </div>
+                            <div>
+                                <input type="submit" class="btn-form" value="Registrar" id="Registerbtn" onclick="" />
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Deatils list-->
+                    <div class="details">
+                        <div class="recentOrders">
+                            <div class="cardHeader">
+                                <h2>Solicitud de vacaciones</h2>
+                                <a href="" class="btn">Ver todo</a>
+                            </div>
+                            <!-- cards -->
+                            <div class="cardBox">
+                                <div class="card" onclick="filterInput('Pendiente')">
+                                    <div>
+                                        <div class="numbers">88588848</div>
+                                        <div class="cardname">Sin responder</div>
+                                    </div>
+                                    <div class="iconBx">
+                                        <ion-icon name="alert-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="card" onclick="filterInput('Aceptado')">
+                                    <div>
+                                        <div class="numbers">1234555689</div>
+                                        <div class="cardname">Aceptadas</div>
+                                    </div>
+                                    <div class="iconBx">
+                                        <ion-icon name="happy-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="card" onclick="filterInput('Declinado')">
+                                    <div>
+                                        <div class="numbers">1234555689</div>
+                                        <div class="cardname">Declinadas</div>
+                                    </div>
+                                    <div class="iconBx">
+                                        <ion-icon name="sad-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="card" onclick="filterInput(null)">
+                                    <div>
+                                        <div class="numbers">1234555689</div>
+                                        <div class="cardname">Total</div>
+                                    </div>
+                                    <div class="iconBx">
+                                        <ion-icon name="documents-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>Cedula</td>
+                                            <td>Nombre</td>
+                                            <td>Fecha Inicial</td>
+                                            <td>Fecha Final</td>
+                                            <td>Estado</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <% User.forEach(user=> { %>
+                                            <tr id="record">
+                                                <td>
+                                                    <%= user.ced %>
+                                                </td>
+                                                <td>
+                                                    <%= user.name %>
+                                                </td>
+                                                <td>
+                                                    <%= user.dateStart %>
+                                                </td>
+                                                <td>
+                                                    <%= user.dateEnd %>
+                                                </td>
+                                                <td>
+                                                    <span class="status" id="myElement">
+                                                        <%= user.estado %>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a href="/user/delete/records/<%= user.id %>">
+                                                        <ion-icon name="trash-bin-outline" style="color: brown;">
+                                                        </ion-icon>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/user/edit/<%= user.id %>">
+                                                        <ion-icon name="create-outline"></ion-icon>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Colaboradores -->
+                        <div class="colaboradores">
+                            <div class="cardHeader">
+                                <h2>Colaboradores</h2>
+                            </div>
+                            <table>
+                                <% collab.forEach(user2=> { %>
+                                    <tr>
+                                        <td><img src="/<%= user2.img %>" alt="" srcset="" class="imgBx"></td>
+                                        <td>
+                                            <h4>
+                                                <%= user2.name %>
+                                            </h4>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <%= user2.email %>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </table>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+    <script src="../js/dash.js"></script>
+</body>
+
+</html>

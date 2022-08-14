@@ -1,0 +1,92 @@
+<%- include("headers") %>
+
+    <body>
+        <main>
+            <div class="col-md-7 col-lg-8 items-center mx-auto">
+                <h4 class="mb-3">Editar usuario</h4>
+                <form class="needs-validation d-block mx-auto" action="/user/edit/profile/<%= Came.id %>" method="post" novalidate>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="firstName" class="form-label">Nombre completo</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">NOM</span>
+                                <input name="name" type="text" class="form-control" id="firstName" placeholder="" value="<%=Came.name %>" required />
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="username" class="form-label">Cedula</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">CED</span>
+                                <input name="ced" type="text" class="form-control" id="username" value="<%= Came.ced %>" placeholder="Username" required readonly />
+                                <div class="invalid-feedback">
+                                    Your username is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+                            <input type="email" class="form-control" id="email" value="<%= Came.email %>" placeholder="" readonly required />
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Old Password <span class="text-muted"></span></label>
+                            <input name="oldPass" type="password" class="form-control" id="" value="" placeholder="" required />
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">New Password <span class="text-muted"></span></label>
+                            <input name="newPass" type="password" class="form-control" id="email" value="" placeholder="" required />
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Telefono</label>
+                            <input name="phone" type="text" class="form-control" id="address" placeholder="Digite su numero de celular" value="<%= Came.phone %>" required />
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Save
+  </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Guardar cambios del perfil</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+
+    <%- include("footers") %>

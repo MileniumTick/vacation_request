@@ -1,0 +1,132 @@
+<%- include("headers") %>
+    <main>
+        <div class="col-md-7 col-lg-8 items-center mx-auto">
+            <h4 class="mb-3">Solicitud de vacaciones</h4>
+            <form class="needs-validation d-block mx-auto" action="<% if(Came.tipoUser ==='Client' ){ %>/records/<%= Came.id %><%}else{%> /edit/records/<%= Came.id %><%}%>" method="post" novalidate>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="firstName" class="form-label">Nombre completo</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">NOM</span>
+                            <input name="name" type="text" class="form-control" id="firstName" placeholder="" value="<%=Came.name %>" readonly required />
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="username" class="form-label">Cedula</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">CED</span>
+                            <input name="ced" type="text" class="form-control" id="username" value="<%= Came.ced %>" placeholder="Username" required readonly />
+                            <div class="invalid-feedback">
+                                Your username is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+                        <input type="email" class="form-control" id="email" value="<%= collab.email %>" placeholder="" readonly required />
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address" class="form-label">Departamento</label>
+                        <input name="dapartment" type="text" class="form-control" id="address" placeholder="Digite un departamento" value="<%= Came.department %>" <% if(Came.tipoUser !=="Client" ) { %>readonly
+                        <%}%>
+                            required />
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address" class="form-label">Telefono</label>
+                        <input name="phone" type="text" class="form-control" id="address" placeholder="Digite su numero de celular" value="<%= Came.phone %>" required />
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address2" class="form-label">Fecha Inicial</label>
+                        <input type="datetime-local" name="dateStar" class="form-control" id="address2" placeholder="Apartment or suite" value="<%= Came.dateStart %>" />
+                    </div>
+                    <div class="col-12">
+                        <label for="address3" class="form-label">Fecha Final</label>
+                        <input type="datetime-local" name="dateEnd" class="form-control" id="address3" placeholder="Apartment or suite" value="<%= Came.dateEnd %>" />
+                    </div>
+                    <% if(Came.tipoUser !=="Client" ){ %>
+                        <div class="col-md-12">
+                            <label for="country" class="form-label">Estado</label>
+                            <select class="form-select" id="country" name="estado" required>
+                <option value="<%= Came.estado %>">Elegir...</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="Declinado">Declinada</option>
+                <option value="Aceptado">Aceptada</option>
+              </select>
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+
+
+
+                </div>
+
+                <hr class="my-4" />
+
+                <h4 class="mb-3">Tipo de Vacacion</h4>
+
+                <div class="col-12">
+                    <input type="text" name="vaca" class="form-control" id="address2" placeholder="Apartment or suite" value="<%= Came.vaca %>" readonly />
+                </div>
+                <% }else{ %>
+
+                    <hr class="my-4" />
+
+                    <h4 class="mb-3">Tipo de Vacacion</h4>
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="credit" name="vaca" type="radio" class="form-check-input" value="Incapacidad" checked required />
+                            <label class="form-check-label" for="credit">Incapacidad</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="debit" name="vaca" type="radio" class="form-check-input" value="Vacacion" required />
+                            <label class="form-check-label" for="debit">Vacacion</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="paypal" name="vaca" type="radio" class="form-check-input" value="Sin goce de salario" required />
+                            <label class="form-check-label" for="paypal">Sin goce de salario</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="paypal" name="vaca" type="radio" class="form-check-input" value="Beneficio de cumpleannos" required />
+                            <label class="form-check-label" for="paypal">Beneficio de cumpleannos</label>
+                        </div>
+                    </div>
+                    <%}%>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Detalle</label>
+                            <input name="detalle" type="text" class="form-control" id="address" value="<%= Came.detalle %>" required />
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">
+              Continuar
+            </button>
+            </form>
+        </div>
+        </div>
+    </main>
+
+    <%- include("footers") %>
